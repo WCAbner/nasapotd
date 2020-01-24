@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>NASA's Photo Of The Day</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="./static/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /*!
+    * Start Bootstrap - The Big Picture (https://startbootstrap.com/template-overviews/the-big-picture)
+    * Copyright 2013-2019 Start Bootstrap
+    * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-the-big-picture/blob/master/LICENSE)
+    */
+
+    /*
+    .about {
+      position: absolute;
+      top: 15px;
+      right: 30px;
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 600;
+    }
+    */
+  </style>
+
+</head>
+
+<body id="body" style="-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; font-size: 1.25rem; color: rgba(255, 255, 255, 0.75);">
+
+  <!-- About Link -->
+  <!--  <a href="/about" class="about">About This Page</a> -->
+
+  <!-- Page Content -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h1 id="title" class="mt-5"></h1>
+          <p id="explanation"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="./static/jquery.min.js"></script>
+  <script src="./static/bootstrap.bundle.min.js"></script>
+
+  <script>
+    fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
+    .then(res => res.json())
+    .then((data) => {
+      document.getElementById("body").style.background = "url('"+data.url+"')" + "no-repeat center center fixed"
+      document.getElementById("body").style.backgroundSize = "cover"
+      document.getElementById("title").innerHTML = data.title
+      document.getElementById("explanation").innerHTML = data.explanation
+    })
+
+  </script>
+
+</body>
+
+</html>
